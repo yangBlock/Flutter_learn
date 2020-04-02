@@ -1,72 +1,67 @@
 import 'package:flutter/material.dart';
-import 'model/post.dart';
-
+import './demo/listview_demo.dart';
+import './demo/hello_demo.dart';
+import './demo/Drawer_demo.dart';
+import './demo/bottom_navigation_bar_demo.dart';
 void main () => runApp(AppFlutter());
 
 class AppFlutter extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
       return MaterialApp(
+          debugShowCheckedModeBanner: false,
           home: Home(),
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.yellow,
+            highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
+            splashColor: Colors.white70,
           )
       );
     }
 }
 
 class Home extends StatelessWidget {
-  Widget _listItemBuilder(BuildContext context,int index) {
-    return Container(
-      color: Colors.white,
-      margin: EdgeInsets.all(8.0),
-      child: Column(
-        children: <Widget>[
-          Image.network(posts[index].imageUrl),
-          SizedBox(height: 16.0),
-          Text(
-            posts[index].title,
-            style: Theme.of(context).textTheme.title,
-          ),
-          Text(
-            posts[index].author,
-            style: Theme.of(context).textTheme.subhead,
-          ),
-          SizedBox(height: 16.0),
-        ],
-      ),
-    );
-  }
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-        backgroundColor: Colors.grey[100],
-        appBar: AppBar(
-          title: Text('Flutter'),
-        ),
-        body: ListView.builder(
-          itemCount: posts.length,
-          itemBuilder: _listItemBuilder,
-        )
-    );
-  }
-}
 
-class Hello extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return  Center(
-      child: Text(
-        'hello',
-        textDirection: TextDirection.ltr,
-        style: TextStyle(
-          fontSize: 40.0,
-          fontWeight: FontWeight.bold,
-          color: Colors.blueAccent,
+    return DefaultTabController(
+        length: 3,
+        child:Scaffold(
+          backgroundColor: Colors.grey[100],
+          appBar: AppBar(
+            title: Text('Flutter'),
+            actions: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.search),
+                  tooltip: 'Search',
+                  onPressed: () => debugPrint('Search button is pressed.')
+              ),
+            ],
+            elevation: 0.0,
+            bottom: TabBar(
+              unselectedLabelColor: Colors.black38,
+              indicatorColor: Colors.black54,
+              indicatorSize: TabBarIndicatorSize.label,
+              indicatorWeight: 1.0,
+              tabs: <Widget>[
+                Tab(icon: Icon(Icons.directions_run)),
+                Tab(icon: Icon(Icons.directions_bike)),
+                Tab(icon: Icon(Icons.directions_car)),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: <Widget>[
+              ListViewDemo(),
+              Icon(Icons.directions_bike,size: 130,color: Colors.black12),
+              Icon(Icons.directions_car,size: 130,color: Colors.black12),
+
+            ],
+          ),
+          drawer: DrawerDemo(),
+          bottomNavigationBar: BottomNavigationBarDemo(),
         ),
-      ),
     );
   }
 }
