@@ -5,6 +5,7 @@ import './demo/Drawer_demo.dart';
 import './demo/bottom_navigation_bar_demo.dart';
 import './demo/basic_demo.dart';
 import './demo/layout_demo.dart';
+import './demo/view_demo.dart';
 void main () => runApp(AppFlutter());
 
 class AppFlutter extends StatelessWidget {
@@ -28,7 +29,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return DefaultTabController(
-        length: 3,
+        length: 4,
         child:Scaffold(
           backgroundColor: Colors.grey[100],
           appBar: AppBar(
@@ -50,6 +51,8 @@ class Home extends StatelessWidget {
                 Tab(icon: Icon(Icons.directions_run)),
                 Tab(icon: Icon(Icons.directions_bike)),
                 Tab(icon: Icon(Icons.directions_car)),
+                Tab(icon: Icon(Icons.directions_boat)),
+
               ],
             ),
           ),
@@ -58,7 +61,7 @@ class Home extends StatelessWidget {
               ListViewDemo(),
               BasicDemo(),
               LayoutDemo(),
-
+              ViewDemo(),
             ],
           ),
           drawer: DrawerDemo(),

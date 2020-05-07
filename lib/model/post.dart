@@ -46,5 +46,13 @@ final List<Post> posts = [
       title: '西湖龙井',
       author: '小西湖',
       imageUrl: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3000960681,536926544&fm=26&gp=0.jpg'
+  ), Post(
+      title: '花花',
+      author: '花花世界',
+      imageUrl: 'https://goss.veer.com/creative/vcg/veer/800water/veer-313392047.jpg'
+  ), Post(
+      title: '西湖龙井',
+      author: '花花',
+      imageUrl: 'https://goss.veer.com/creative/vcg/veer/800water/veer-315386030.jpg'
   ),
 ];
