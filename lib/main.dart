@@ -4,6 +4,7 @@ import './demo/hello_demo.dart';
 import './demo/Drawer_demo.dart';
 import './demo/bottom_navigation_bar_demo.dart';
 import './demo/basic_demo.dart';
+import './demo/layout_demo.dart';
 void main () => runApp(AppFlutter());
 
 class AppFlutter extends StatelessWidget {
@@ -56,7 +57,7 @@ class Home extends StatelessWidget {
             children: <Widget>[
               ListViewDemo(),
               BasicDemo(),
-              Icon(Icons.directions_car,size: 130,color: Colors.black12),
+              LayoutDemo(),
 
             ],
           ),
