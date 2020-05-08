@@ -30,7 +30,7 @@ class SliverDemo extends StatelessWidget {
           SliverSafeArea(//在安全区域显示
             sliver: SliverPadding(
               padding: EdgeInsets.all(8.0),
-              sliver: SliverGridDemo(),
+              sliver: SliverListDemo(),
             ),
           ),
         ],
