@@ -7,6 +7,7 @@ import './demo/basic_demo.dart';
 import './demo/layout_demo.dart';
 import './demo/view_demo.dart';
 import './demo/sliver_demo.dart';
+import './demo/navigator_demo.dart';
 void main () => runApp(AppFlutter());
 
 class AppFlutter extends StatelessWidget {
@@ -14,7 +15,10 @@ class AppFlutter extends StatelessWidget {
     Widget build(BuildContext context) {
       return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: Home(),
+          home: NavigatorDemo(),
+          routes: {//带名字的路由
+            '/about':(context) => Page(title: 'About'),
+          },
           theme: ThemeData(
             primarySwatch: Colors.yellow,
             highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
