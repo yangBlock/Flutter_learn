@@ -27,9 +27,34 @@ class TextFieldDemo extends StatefulWidget {
 }
 
 class _TextFieldDemoState extends State<TextFieldDemo> {
+  final textEditingController = TextEditingController();
+
+  @override
+  void dispose() {//释放textEditingController
+    // TODO: implement dispose
+    textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {//初始数据
+    // TODO: implement initState
+    super.initState();
+//    textEditingController.text = 'hi';
+    textEditingController.addListener((){
+      debugPrint('input:${textEditingController.text}');
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: textEditingController,
+//      onChanged: (value){//输入时回调方法
+//        debugPrint('input:$value');
+//      },
+      onSubmitted: (value){//点击确定回调方法
+        debugPrint('submit: $value');
+      },
       decoration: InputDecoration(
         icon: Icon(Icons.subject),
         labelText: 'title',
