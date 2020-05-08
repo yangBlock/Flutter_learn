@@ -13,7 +13,7 @@ class FormDemo extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TextFieldDemo(),
+              RegisterForm(),
             ],
           ),
         ),
@@ -21,6 +21,45 @@ class FormDemo extends StatelessWidget {
     );
   }
 }
+
+class RegisterForm extends StatefulWidget {
+  @override
+  _RegisterFormState createState() => _RegisterFormState();
+}
+
+class _RegisterFormState extends State<RegisterForm> {
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: Column(
+        children: <Widget>[
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: 'Username',
+            ),
+          ),
+          TextFormField(
+            obscureText: true,//设置为密码模式
+            decoration: InputDecoration(
+              labelText: 'Passwork',
+            ),
+          ),
+          SizedBox(height: 32.0),
+          Container(
+            width: double.infinity,
+            child: RaisedButton(
+              color: Theme.of(context).accentColor,
+              child: Text('Register', style: TextStyle(color: Colors.white)),
+              elevation: 0.0,
+              onPressed: (){},
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class TextFieldDemo extends StatefulWidget {
   @override
   _TextFieldDemoState createState() => _TextFieldDemoState();
