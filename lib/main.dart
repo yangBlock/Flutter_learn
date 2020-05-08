@@ -15,8 +15,11 @@ class AppFlutter extends StatelessWidget {
     Widget build(BuildContext context) {
       return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: NavigatorDemo(),
+//          home: NavigatorDemo(),
+          //初始路由
+          initialRoute: '/about',
           routes: {//带名字的路由
+            '/':(context) => NavigatorDemo(),//初始路由
             '/about':(context) => Page(title: 'About'),
           },
           theme: ThemeData(
