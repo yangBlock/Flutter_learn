@@ -30,7 +30,7 @@ class RegisterForm extends StatefulWidget {
 class _RegisterFormState extends State<RegisterForm> {
   final registerFormKey = GlobalKey<FormState>();
   String username,passwork;
-
+//自定义注册方法
   void submitRegisterForm () {
     registerFormKey.currentState.save();
     debugPrint('username: $username');
