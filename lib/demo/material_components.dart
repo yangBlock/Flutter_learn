@@ -24,9 +24,9 @@ class FloatingActionButtonDemo extends StatelessWidget {
     onPressed: () {},
     child: Icon(Icons.add),//图标
     backgroundColor: Colors.black87,//颜色
-    shape: BeveledRectangleBorder(
-      borderRadius: BorderRadius.circular(10.0),
-    ),
+//    shape: BeveledRectangleBorder(
+//      borderRadius: BorderRadius.circular(10.0),
+//    ),
   );
 
   final Widget _floatingActionButtonExtended = FloatingActionButton.extended(//标签浮动按钮
@@ -40,8 +40,14 @@ class FloatingActionButtonDemo extends StatelessWidget {
         title: Text('FloatingActionButtonDemo'),
         elevation: 0.0,
       ),
-      floatingActionButton: _floatingActionButtonExtended,
-
+      floatingActionButton: _floatingActionButton,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,//按钮位置
+      bottomNavigationBar: BottomAppBar(//底部工具栏
+        child: Container(
+          height: 80.0,
+        ),
+        shape: CircularNotchedRectangle(),//在底部工具栏上给漂浮按钮切除一个切口
+      ),
     );
   }
 }
