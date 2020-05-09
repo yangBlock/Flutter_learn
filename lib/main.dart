@@ -9,6 +9,7 @@ import './demo/view_demo.dart';
 import './demo/sliver_demo.dart';
 import './demo/navigator_demo.dart';
 import './demo/form_demo.dart';
+import './demo/material_components.dart';
 void main () => runApp(AppFlutter());
 
 class AppFlutter extends StatelessWidget {
@@ -18,11 +19,12 @@ class AppFlutter extends StatelessWidget {
           debugShowCheckedModeBanner: false,
 //          home: NavigatorDemo(),
           //初始路由
-          initialRoute: '/form',
+          initialRoute: '/mdc',
           routes: {//带名字的路由
             '/':(context) => Home(),//初始路由
             '/about':(context) => Page(title: 'About'),
             '/form':(context) => FormDemo(),
+            '/mdc':(context) => MaterialComponents(),
           },
           theme: ThemeData(
             primarySwatch: Colors.yellow,
