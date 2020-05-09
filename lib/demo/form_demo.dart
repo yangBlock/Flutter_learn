@@ -33,8 +33,23 @@ class _RegisterFormState extends State<RegisterForm> {
 //自定义注册方法
   void submitRegisterForm () {
     registerFormKey.currentState.save();
+    registerFormKey.currentState.validate();
     debugPrint('username: $username');
     debugPrint('passwork: $passwork');
+  }
+
+  String validatorUsername(value) {
+    if (value.isEmpty) {
+      return '用户名不能为空';
+    }
+    return null;
+  }
+
+  String validatorPassword(value) {
+    if (value.isEmpty) {
+      return '密码不能为空';
+    }
+    return null;
   }
   @override
   Widget build(BuildContext context) {
@@ -45,19 +60,25 @@ class _RegisterFormState extends State<RegisterForm> {
           TextFormField(
             decoration: InputDecoration(
               labelText: 'Username',
+              helperText: '',
             ),
             onSaved: (value){
               username = value;
             },
+            //验证表单里的数据
+            validator: validatorUsername,
           ),
           TextFormField(
             obscureText: true,//设置为密码模式
             decoration: InputDecoration(
               labelText: 'Passwork',
+              helperText: '',
             ),
             onSaved: (value){
               passwork = value;
             },
+            //验证密码不为空
+            validator: validatorPassword,
           ),
           SizedBox(height: 32.0),
           Container(
