@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import '../demo/button_demo.dart';
+import '../demo/floating_action_button_demo.dart';
+import '../demo/popup_menu_button_demo.dart';
 class MaterialComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -11,6 +13,7 @@ class MaterialComponents extends StatelessWidget {
 
       body: ListView(
         children: <Widget>[
+          ListItem(title: 'PopupMenuButton',page: PopupMenuButtonDemo()),
           ListItem(title: 'Button',page: ButtonDemo()),
           ListItem(title: 'FloatingActionButton',page: FloatingActionButtonDemo()),
         ],
@@ -19,152 +22,6 @@ class MaterialComponents extends StatelessWidget {
   }
 }
 
-class ButtonDemo extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final Widget FlatButtonDemo = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        FlatButton(
-          child: Text('Button'),
-          onPressed: () {},
-          splashColor: Colors.grey,
-          textColor: Theme.of(context).accentColor,
-        ),
-        FlatButton.icon(
-          icon: Icon(Icons.add),
-          label: Text('Button'),
-          onPressed: () {},
-          splashColor: Colors.grey,
-          textColor: Theme.of(context).accentColor,
-        ),
-      ],
-    );
-    final Widget RaisedButtonDemo = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Theme(
-          data: Theme.of(context).copyWith(
-            buttonColor: Theme.of(context).accentColor,
-            buttonTheme: ButtonThemeData(
-              textTheme: ButtonTextTheme.primary,
-//                      shape: BeveledRectangleBorder(
-//                        borderRadius: BorderRadius.circular(5.0),
-//                      ),
-              shape: StadiumBorder(),//橄榄球场，椭圆形
-            ),
-          ),
-          child: RaisedButton(
-            child: Text('Button'),
-            onPressed: () {},
-            splashColor: Colors.grey,
-            elevation: 0.0,
-            color: Theme.of(context).accentColor,
-//                  textColor: Colors.white,
-//                  textTheme: ButtonTextTheme.primary,
-          ),
-        ),
-        SizedBox(width: 16.0),
-        RaisedButton.icon(
-          icon: Icon(Icons.add),
-          label: Text('Button'),
-          onPressed: () {},
-          splashColor: Colors.grey,
-          elevation: 12.0,
-          textColor: Theme.of(context).accentColor,
-        ),
-      ],
-    );
-    final Widget OutlineButtonDemo = Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Theme(
-          data: Theme.of(context).copyWith(
-            buttonColor: Theme.of(context).accentColor,
-            buttonTheme: ButtonThemeData(
-              textTheme: ButtonTextTheme.primary,
-//                      shape: BeveledRectangleBorder(
-//                        borderRadius: BorderRadius.circular(5.0),
-//                      ),
-              shape: StadiumBorder(),//橄榄球场，椭圆形
-            ),
-          ),
-          child: OutlineButton(
-            child: Text('Button'),
-            onPressed: () {},
-            splashColor: Colors.grey[100],
-            borderSide: BorderSide(//描边颜色
-              color:Colors.black,
-            ),
-//                  color: Theme.of(context).accentColor,
-            textColor: Colors.black,
-            highlightedBorderColor: Colors.grey,
-//                  textTheme: ButtonTextTheme.primary,
-          ),
-        ),
-        SizedBox(width: 16.0),
-        OutlineButton.icon(
-          icon: Icon(Icons.add),
-          label: Text('Button'),
-          onPressed: () {},
-          splashColor: Colors.grey,
-          textColor: Theme.of(context).accentColor,
-        ),
-      ],
-    );
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('ButtonDemo'),
-        elevation: 0.0,
-      ),
-      body: Container(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Theme(
-                  data: Theme.of(context).copyWith(
-                    buttonColor: Theme.of(context).accentColor,
-                    buttonTheme: ButtonThemeData(
-                      textTheme: ButtonTextTheme.primary,
-//                      shape: BeveledRectangleBorder(
-//                        borderRadius: BorderRadius.circular(5.0),
-//                      ),
-                      shape: StadiumBorder(),//橄榄球场，椭圆形
-                    ),
-                  ),
-                  child: OutlineButton(
-                    child: Text('Button'),
-                    onPressed: () {},
-                    splashColor: Colors.grey[100],
-                    borderSide: BorderSide(//描边颜色
-                      color:Colors.black,
-                    ),
-//                  color: Theme.of(context).accentColor,
-                    textColor: Colors.black,
-                    highlightedBorderColor: Colors.grey,
-//                  textTheme: ButtonTextTheme.primary,
-                  ),
-                ),
-                SizedBox(width: 16.0),
-                OutlineButton.icon(
-                  icon: Icon(Icons.add),
-                  label: Text('Button'),
-                  onPressed: () {},
-                  splashColor: Colors.grey,
-                  textColor: Theme.of(context).accentColor,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
 
 
 class _WidgetDemo extends StatelessWidget {
@@ -188,41 +45,6 @@ class _WidgetDemo extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class FloatingActionButtonDemo extends StatelessWidget {
-  @override
-
-  final Widget _floatingActionButton = FloatingActionButton(//悬浮按钮
-    onPressed: () {},
-    child: Icon(Icons.add),//图标
-    backgroundColor: Colors.black87,//颜色
-//    shape: BeveledRectangleBorder(
-//      borderRadius: BorderRadius.circular(10.0),
-//    ),
-  );
-
-  final Widget _floatingActionButtonExtended = FloatingActionButton.extended(//标签浮动按钮
-    onPressed: () {},
-    icon: Icon(Icons.add),
-    label: Text('Add'),
-  );
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('FloatingActionButtonDemo'),
-        elevation: 0.0,
-      ),
-      floatingActionButton: _floatingActionButton,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,//按钮位置
-      bottomNavigationBar: BottomAppBar(//底部工具栏
-        child: Container(
-          height: 80.0,
-        ),
-        shape: CircularNotchedRectangle(),//在底部工具栏上给漂浮按钮切除一个切口
       ),
     );
   }
