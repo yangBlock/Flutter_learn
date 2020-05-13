@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // flutter packages get 导入第三方库的命令
-
+import 'dart:async';
 class DateTimeDemo extends StatefulWidget {
   @override
   _DateTimeDemoState createState() => _DateTimeDemoState();
 }
 
 class _DateTimeDemoState extends State<DateTimeDemo> {
-  final selectedDate = DateTime.now();//获取当前时间
-  _selectDate() {
-    showDatePicker(
+  DateTime selectedDate = DateTime.now();//获取当前时间
+  _selectDate() async {
+    final DateTime date = await showDatePicker(
         context: context,
         initialDate: selectedDate,
         firstDate: DateTime(1900),
-        lastDate: DateTime(2100));
+        lastDate: DateTime(2100)
+    );
+    if (date == null) return;
+    setState(() {
+      selectedDate = date;
+    });
   }
   @override
   Widget build(BuildContext context) {
