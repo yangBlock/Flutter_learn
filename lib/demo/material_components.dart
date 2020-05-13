@@ -8,6 +8,7 @@ import '../demo/checkbox_demo.dart';
 import '../demo/Radio_demo.dart';
 import '../demo/switch_demo.dart';
 import '../demo/slider_demo.dart';
+import '../demo/datetime_demo.dart';
 class MaterialComponents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,6 +20,7 @@ class MaterialComponents extends StatelessWidget {
 
       body: ListView(
         children: <Widget>[
+          ListItem(title: 'DateTimeDemo',page: DateTimeDemo()),
           ListItem(title: 'SliderDemo',page: SliderDemo()),
           ListItem(title: 'SwitchDemo',page: SwitchDemo()),
           ListItem(title: 'RadioDemo',page: RadioDemo()),
