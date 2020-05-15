@@ -10,7 +10,7 @@ class _SanckBarDemoState extends State<SanckBarDemo> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('_WidgetDemo'),
+        title: Text('SanckBarDemo'),
         elevation: 0.0,
       ),
       body: Container(
