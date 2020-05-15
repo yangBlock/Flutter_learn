@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 
+enum Action {
+  Ok,
+  Cancel
+}
 class AlertDialogDemo extends StatefulWidget {
   @override
   _AlertDialogDemoState createState() => _AlertDialogDemoState();
 }
 
 class _AlertDialogDemoState extends State<AlertDialogDemo> {
-  _openAlertDialog () {
-    showDialog(
+
+  String _choice = 'Nothing';
+
+  Future _openAlertDialog () async {
+    final action = await showDialog(
       context: context,
       barrierDismissible: false,//点击空白地方不会关掉对话框
       builder: (BuildContext context) {
@@ -18,19 +26,33 @@ class _AlertDialogDemoState extends State<AlertDialogDemo> {
             FlatButton(
               child: Text('Cancel'),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context,Action.Cancel);
               },
             ),
             FlatButton(
               child: Text('Ok'),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context,Action.Ok);
               },
             ),
           ],
         );
       },
     );
+
+    switch (action) {
+      case Action.Ok:
+        setState(() {
+          _choice = 'Ok';
+        });
+        break;
+      case Action.Cancel:
+        setState(() {
+          _choice = 'Cancel';
+        });
+        break;
+      default:
+    }
   }
   @override
   Widget build(BuildContext context) {
@@ -44,6 +66,7 @@ class _AlertDialogDemoState extends State<AlertDialogDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text('your choice is:$_choice'),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
