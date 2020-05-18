@@ -22,6 +22,9 @@ class _DataTableDemoState extends State<DataTableDemo> {
             DataTable(
               sortColumnIndex: _sortColumnIndex,//排序栏的索引号
               sortAscending: _sortAscending,//默认升序排列，false标识降序排列
+              onSelectAll: (bool value) {//是否全选
+
+              },
               columns:[
                 DataColumn(
                   label: Text('Title'),
@@ -49,6 +52,14 @@ class _DataTableDemoState extends State<DataTableDemo> {
               ] ,
               rows: posts.map((post) {
                 return DataRow(
+                  selected: post.selected,//行的选择状态
+                  onSelectChanged: (value) {
+                    setState(() {
+                      if (post.selected != value) {
+                        post.selected = value;
+                      }
+                    });
+                  },
                   cells: [
                     DataCell(Text(post.title)),
                     DataCell(Text(post.author)),
