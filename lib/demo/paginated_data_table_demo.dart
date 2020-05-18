@@ -30,6 +30,20 @@ class PostDataSource extends DataTableSource {
       ],
     );
   }
+
+  void _sort(getField(post), bool ascending) {
+    _post.sort((a,b) {
+      if (!ascending) {
+        final c = a;
+        a = b;
+        b = c;
+      }
+      final aValue = getField(a);
+      final bValue = getField(b);
+      return Comparable.compare(aValue, bValue);
+    });
+    notifyListeners();
+  }
 }
 class PaginatedDataTableDemo extends StatefulWidget {
   @override
@@ -64,18 +78,11 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
               columns:[
                 DataColumn(
                   label: Text('Title'),
-                  onSort: (int index, bool ascending) {
+                  onSort: (int columnIndex, bool ascending) {
+                    _postDataSource._sort((post) => post.title.length,ascending);
                     setState(() {
-                      _sortColumnIndex = index;
+                      _sortColumnIndex = columnIndex;
                       _sortAscending = ascending;
-                      posts.sort((a,b) {
-                        if (!ascending) {
-                          final c = a;
-                          a = b;
-                          b = c;
-                        }
-                        return a.title.length.compareTo(b.title.length);//按照字符的长度，升序或者降序排列
-                      });
                     });
                   },
                 ),
