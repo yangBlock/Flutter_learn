@@ -5,6 +5,8 @@ class StepperDemo extends StatefulWidget {
 }
 
 class _StepperDemoState extends State<StepperDemo> {
+
+  int _currentStep = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,24 +24,40 @@ class _StepperDemoState extends State<StepperDemo> {
                   primaryColor: Colors.black,
                 ),
                 child: Stepper(
+                  currentStep: _currentStep,//步骤索引值
+                  onStepTapped: (int value) {//点击步骤
+                    setState(() {
+                      _currentStep = value;
+                    });
+                  },
+                  onStepContinue: () {//点击继续
+                    setState(() {
+                      _currentStep < 2 ? _currentStep +=1 : _currentStep = 0;
+                    });
+                  },
+                  onStepCancel: () {//点击取消
+                    setState(() {
+                      _currentStep >0 ?_currentStep -=1 : _currentStep = 0;
+                    });
+                  },
                   steps: [
                     Step(
                       title: Text('Login'),
                       subtitle: Text('Login first'),
                       content: Text('Magna exercitation duis non sint eu nostrud.'),
-                      isActive: true,//是否激活
+                      isActive: _currentStep == 0,//是否激活
                     ),
                     Step(
                       title: Text('Choose Plan'),
                       subtitle: Text('Choose you plan.'),
                       content: Text('Magna exercitation duis non sint eu nostrud.'),
-                      isActive: true,//是否激活
+                      isActive: _currentStep == 1,//是否激活
                     ),
                     Step(
                       title: Text('Confirm payment'),
                       subtitle: Text('Confirm your payment method.'),
                       content: Text('Magna exercitation duis non sint eu nostrud.'),
-                      isActive: true,//是否激活
+                      isActive: _currentStep == 2,//是否激活
                     ),
                   ],
                 )),
