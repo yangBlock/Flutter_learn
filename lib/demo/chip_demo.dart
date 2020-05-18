@@ -42,6 +42,11 @@ class _ChipDemoState extends State<ChipDemo> {
                     backgroundImage: NetworkImage('http://t7.baidu.com/it/u=2336214222,3541748819&fm=79&app=86&size=h300&n=0&g=4n&f=jpeg?sec=1590142371&t=929b38fea24db098b7326c8eb4856532'),
                   ),
                 ),
+                Divider(//分隔符
+                  color: Colors.grey,
+                  height: 32.0,
+//                  indent: 32.0,//左边缩进
+                ),
               ],
             ),
           ],
