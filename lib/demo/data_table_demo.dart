@@ -6,6 +6,8 @@ class DataTableDemo extends StatefulWidget {
 }
 
 class _DataTableDemoState extends State<DataTableDemo> {
+  int _sortColumnIndex = 0;
+  bool _sortAscending = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,9 +20,25 @@ class _DataTableDemoState extends State<DataTableDemo> {
         child: ListView(
           children: <Widget>[
             DataTable(
+              sortColumnIndex: _sortColumnIndex,//排序栏的索引号
+              sortAscending: _sortAscending,//默认升序排列，false标识降序排列
               columns:[
                 DataColumn(
                   label: Text('Title'),
+                  onSort: (int index, bool ascending) {
+                    setState(() {
+                      _sortColumnIndex = index;
+                      _sortAscending = ascending;
+                      posts.sort((a,b) {
+                        if (!ascending) {
+                          final c = a;
+                          a = b;
+                          b = c;
+                        }
+                        return a.title.length.compareTo(b.title.length);//按照字符的长度，升序或者降序排列
+                      });
+                    });
+                  },
                 ),
                 DataColumn(
                   label: Text('Author')
