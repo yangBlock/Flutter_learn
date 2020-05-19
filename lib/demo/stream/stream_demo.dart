@@ -25,6 +25,8 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   StreamController<String> _streamDemo;
 
   StreamSink _sinkDemo;
+
+  String _data = '...';
   @override
   void dispose() {
     // TODO: implement dispose
@@ -48,7 +50,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     _streamSubscription =
         _streamDemo.stream.listen(//第一个订阅
         (event) {
-           print('$event');
+          setState(() {
+            _data = event;
+          });
+          print('$event');
         },
         onDone: (){//完成时
           print('Done!');
@@ -100,24 +105,30 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   Widget build(BuildContext context) {
     return Container(
       child: Center(
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
-              child: Text('Add'),//暂停
-              onPressed: _addDataToStream,
-            ),
-            FlatButton(
-              child: Text('Pause'),//暂停
-              onPressed: _pauseStream,
-            ),
-            FlatButton(
-              child: Text('Resume'),//恢复
-              onPressed: _resumerStream,
-            ),
-            FlatButton(
-              child: Text('Cancel'),//取消
-              onPressed: _cancelStream,
+            Text(_data),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                FlatButton(
+                  child: Text('Add'),//暂停
+                  onPressed: _addDataToStream,
+                ),
+                FlatButton(
+                  child: Text('Pause'),//暂停
+                  onPressed: _pauseStream,
+                ),
+                FlatButton(
+                  child: Text('Resume'),//恢复
+                  onPressed: _resumerStream,
+                ),
+                FlatButton(
+                  child: Text('Cancel'),//取消
+                  onPressed: _cancelStream,
+                ),
+              ],
             ),
           ],
         ),
