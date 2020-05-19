@@ -24,6 +24,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
   StreamController<String> _streamDemo;
 
+  StreamSink _sinkDemo;
   @override
   void dispose() {
     // TODO: implement dispose
@@ -36,6 +37,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     super.initState();
 
     _streamDemo = StreamController<String>();
+    _sinkDemo = _streamDemo.sink;
     print('Create a stream.');
     //创建Stream
 //    Stream<String> _streamDemo = Stream.fromFuture(fetchData());
@@ -72,8 +74,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
   void _addDataToStream() async {
     print('Add data to stream.');
     String data = await fetchData();
-    _streamDemo.add(data);
+//    _streamDemo.add(data);
+    _sinkDemo.add(data);
   }
+
   Future<String> fetchData() async {
     await Future.delayed(Duration(seconds: 5));
 //    throw 'Somthing happened';//异常信息
