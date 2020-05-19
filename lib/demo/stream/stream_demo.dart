@@ -31,15 +31,23 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     
     print('Start listening on a stream.');
     //监听Stream
-    _streamDemo.listen((event) {
-      print('$event');
-    });
+    _streamDemo.listen(
+       (event) {
+         print('$event');
+       },
+        onDone: (){//完成时
+          print('Done!');
+        },
+        onError: (error){//报错时
+          print('Error:$error');
+        });
 
     print('Initialize completed.');
   }
 
   Future<String> fetchData() async {
     await Future.delayed(Duration(seconds: 3));
+    throw 'Somthing happened';//异常信息
     return 'hello ~';
   }
   @override
