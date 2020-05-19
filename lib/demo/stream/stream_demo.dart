@@ -34,6 +34,8 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     _streamDemo.listen((event) {
       print('$event');
     });
+
+    print('Initialize completed.');
   }
 
   Future<String> fetchData() async {
