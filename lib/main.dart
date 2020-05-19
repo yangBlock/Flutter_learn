@@ -23,7 +23,7 @@ class AppFlutter extends StatelessWidget {
           initialRoute: '/state-management',
           routes: {//带名字的路由
             '/':(context) => Home(),//初始路由
-            '/about':(context) => Page(title: 'About'),
+//            '/about':(context) => Page(title: 'About'),
             '/form':(context) => FormDemo(),
             '/mdc':(context) => MaterialComponents(),
             '/state-management':(context) => StateManagementDemo(),
