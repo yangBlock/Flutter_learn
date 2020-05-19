@@ -22,18 +22,27 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
   StreamSubscription _streamSubscription;
 
+  StreamController<String> _streamDemo;
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _streamDemo.close();
+    super.dispose();
+  }
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
+    _streamDemo = StreamController<String>();
     print('Create a stream.');
     //创建Stream
-    Stream<String> _streamDemo = Stream.fromFuture(fetchData());
+//    Stream<String> _streamDemo = Stream.fromFuture(fetchData());
     
     print('Start listening on a stream.');
     //监听Stream
-    _streamSubscription = _streamDemo.listen(
+    _streamSubscription = _streamDemo.stream.listen(
        (event) {
          print('$event');
        },
@@ -60,6 +69,11 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     _streamSubscription.cancel();
   }
 
+  void _addDataToStream() async {
+    print('Add data to stream.');
+    String data = await fetchData();
+    _streamDemo.add(data);
+  }
   Future<String> fetchData() async {
     await Future.delayed(Duration(seconds: 5));
 //    throw 'Somthing happened';//异常信息
@@ -72,6 +86,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            FlatButton(
+              child: Text('Add'),//暂停
+              onPressed: _addDataToStream,
+            ),
             FlatButton(
               child: Text('Pause'),//暂停
               onPressed: _pauseStream,
