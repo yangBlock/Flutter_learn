@@ -20,6 +20,8 @@ class StreamDemoHome extends StatefulWidget {
 
 class _StreamDemoHomeState extends State<StreamDemoHome> {
 
+  StreamSubscription _streamSubscription;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -31,7 +33,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     
     print('Start listening on a stream.');
     //监听Stream
-    _streamDemo.listen(
+    _streamSubscription = _streamDemo.listen(
        (event) {
          print('$event');
        },
@@ -45,13 +47,46 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     print('Initialize completed.');
   }
 
+  void _pauseStream() {
+    print('Pause subscription');
+    _streamSubscription.pause();
+  }
+  void _resumerStream() {
+    print('Resume subscription');
+    _streamSubscription.resume();
+  }
+  void _cancelStream() {
+    print('Cancel subscription');
+    _streamSubscription.cancel();
+  }
+
   Future<String> fetchData() async {
-    await Future.delayed(Duration(seconds: 3));
-    throw 'Somthing happened';//异常信息
+    await Future.delayed(Duration(seconds: 5));
+//    throw 'Somthing happened';//异常信息
     return 'hello ~';
   }
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FlatButton(
+              child: Text('Pause'),//暂停
+              onPressed: _pauseStream,
+            ),
+            FlatButton(
+              child: Text('Resume'),//恢复
+              onPressed: _resumerStream,
+            ),
+            FlatButton(
+              child: Text('Cancel'),//取消
+              onPressed: _cancelStream,
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
