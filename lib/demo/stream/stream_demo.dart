@@ -36,7 +36,8 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     // TODO: implement initState
     super.initState();
 
-    _streamDemo = StreamController<String>();
+    //多次订阅
+    _streamDemo = StreamController.broadcast();
     _sinkDemo = _streamDemo.sink;
     print('Create a stream.');
     //创建Stream
@@ -44,16 +45,28 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     
     print('Start listening on a stream.');
     //监听Stream
-    _streamSubscription = _streamDemo.stream.listen(
-       (event) {
-         print('$event');
-       },
+    _streamSubscription =
+        _streamDemo.stream.listen(//第一个订阅
+        (event) {
+           print('$event');
+        },
         onDone: (){//完成时
           print('Done!');
         },
         onError: (error){//报错时
           print('Error:$error');
         });
+     _streamDemo.stream.listen(//第二个订阅
+            (event) {
+          print('onDataTwo:$event');
+        },
+        onDone: (){//完成时
+          print('Done!');
+        },
+        onError: (error){//报错时
+          print('Error:$error');
+        });
+
 
     print('Initialize completed.');
   }
