@@ -27,7 +27,9 @@ class _RxDartDemoHomeState extends State<RxDartDemoHome> {
     // TODO: implement initState
     super.initState();
     _textFieldSubject = PublishSubject<String>();
-    _textFieldSubject.listen((value) => print(value));
+    _textFieldSubject
+        .map((event) => 'item: $event')//在value前面拼上item:
+        .listen((value) => print(value));
 
 //    Stream<String> _stream =  Stream.fromIterable(['hello','你好']);
 //    Stream _stream = Stream.periodic(Duration(seconds: 3),(x) => x.toString());//间隔3秒，打印重复的次数
