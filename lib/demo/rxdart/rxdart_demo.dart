@@ -28,7 +28,8 @@ class _RxDartDemoHomeState extends State<RxDartDemoHome> {
     super.initState();
     _textFieldSubject = PublishSubject<String>();
     _textFieldSubject
-        .map((event) => 'item: $event')//在value前面拼上item:
+//        .map((event) => 'item: $event')//在value前面拼上item:
+        .where((event) => event.length > 9)//给数据设置一个条件，条件是：长度大于9
         .listen((value) => print(value));
 
 //    Stream<String> _stream =  Stream.fromIterable(['hello','你好']);
