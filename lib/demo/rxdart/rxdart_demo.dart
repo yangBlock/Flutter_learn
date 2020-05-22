@@ -31,11 +31,12 @@ class _RxDartDemoHomeState extends State<RxDartDemoHome> {
 //      print(event);
 //    });
 
-    PublishSubject<String> _subject = PublishSubject<String>();
-    _subject.listen((value) => print('listen 1: $value'));
+//    PublishSubject<String> _subject = PublishSubject<String>();
+    BehaviorSubject <String> _subject = BehaviorSubject<String>();//BehaviorSubject 把最后一次添加的数据，作为第一个项目交给第一个监听
     _subject.add('hello');
-    _subject.listen((value) => print('listen 2: ${value.toUpperCase()}'));
     _subject.add('hola');
+    _subject.listen((value) => print('listen 1: $value'));
+    _subject.listen((value) => print('listen 2: ${value.toUpperCase()}'));
     _subject.close();
   }
   @override
