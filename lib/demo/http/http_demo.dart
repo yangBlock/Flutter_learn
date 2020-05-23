@@ -44,6 +44,8 @@ class _HttpDemoHomeState extends State<HttpDemoHome> {
     print(postJsonConverted['description']);
     print(postJsonConverted is Map);
 
+    final postModel = Post.fromJson(postJsonConverted);
+    print('titel: ${postModel.title}, description: ${postModel.description}');
   }
   fetchPost() async {
 //    https://resources.ninghao.net/demo/posts.json
@@ -57,3 +59,16 @@ class _HttpDemoHomeState extends State<HttpDemoHome> {
   }
 }
 
+class Post {
+  final String title;
+  final String description;
+
+  Post(
+      this.title,
+      this.description,
+      );
+  Post.fromJson(Map json)
+    : title = json['title'],
+      description = json['description'];
+
+}
