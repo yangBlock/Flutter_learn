@@ -46,6 +46,8 @@ class _HttpDemoHomeState extends State<HttpDemoHome> {
 
     final postModel = Post.fromJson(postJsonConverted);
     print('titel: ${postModel.title}, description: ${postModel.description}');
+    
+    print('${json.encode(postModel)}');
   }
   fetchPost() async {
 //    https://resources.ninghao.net/demo/posts.json
@@ -71,4 +73,9 @@ class Post {
     : title = json['title'],
       description = json['description'];
 
+  //转换成json字符串
+  Map toJson() => {
+    'title':title,
+    'description':description,
+  };
 }
