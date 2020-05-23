@@ -15,6 +15,7 @@ import './demo/stream/stream_demo.dart';
 import './demo/rxdart/rxdart_demo.dart';
 import './demo/block/block_demo.dart';
 import './demo/http/http_demo.dart';
+import './demo/animation/animation_demo.dart';
 void main () => runApp(AppFlutter());
 
 class AppFlutter extends StatelessWidget {
@@ -24,7 +25,7 @@ class AppFlutter extends StatelessWidget {
           debugShowCheckedModeBanner: false,
 //          home: NavigatorDemo(),
           //初始路由
-          initialRoute: '/http',
+          initialRoute: '/animation',
           routes: {//带名字的路由
             '/':(context) => Home(),//初始路由
 //            '/about':(context) => Page(title: 'About'),
@@ -35,6 +36,7 @@ class AppFlutter extends StatelessWidget {
             '/rxdart':(context) => RxDartDemo(),
             '/block':(context) => BlockDemo(),
             '/http':(context) => HttpDemo(),
+            '/animation':(context) => AnimationDemo(),
           },
           theme: ThemeData(
             primarySwatch: Colors.yellow,
