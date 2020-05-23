@@ -27,7 +27,7 @@ class _AnimationDemoHomeState extends State<AnimationDemoHome>  with TickerProvi
     super.initState();
     animationDemoController = AnimationController(
       value: 32.0,//初始值
-      lowerBound: 0.0,//开始值
+      lowerBound: 32.0,//开始值
       upperBound: 100.0,//结束值
       duration: Duration(milliseconds: 3000),
       vsync: this,
@@ -37,6 +37,9 @@ class _AnimationDemoHomeState extends State<AnimationDemoHome>  with TickerProvi
       setState(() {
         
       });
+    });
+    animationDemoController.addStatusListener((status) {
+      print(status);
     });
 
 //    animationDemoController.forward();//开始播放动画
@@ -52,10 +55,17 @@ class _AnimationDemoHomeState extends State<AnimationDemoHome>  with TickerProvi
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ActionChip(
-          label: Text('${animationDemoController.value}'),
+      child: IconButton(
+          icon: Icon(Icons.favorite),
+          iconSize: animationDemoController.value,
           onPressed: () {
-            animationDemoController.forward();
+            switch (animationDemoController.status) {
+              case AnimationStatus.completed:
+                animationDemoController.reverse();//倒退播放动画
+                break;
+              default:
+                animationDemoController.forward();
+            }
           },
       ),
     );
