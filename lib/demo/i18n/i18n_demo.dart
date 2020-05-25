@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterapptext/demo/i18n/map/xzy_demo_localizations.dart';
+import 'package:flutterapptext/demo/i18n/intl/xzy_localizations.dart';
 
 class I18nDemo extends StatelessWidget {
   @override
@@ -17,7 +17,7 @@ class I18nDemo extends StatelessWidget {
             Text(locale.toString()),
             Text(
 //              Localizations.of(context, XZYDemoLocalizations).title,
-              XZYDemoLocalizations.of(context).title,
+              XZYDemoLocalizations.of(context).greet('HELL'),
               style: Theme.of(context).textTheme.title,
             )
           ],
