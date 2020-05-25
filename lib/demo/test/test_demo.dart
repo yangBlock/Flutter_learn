@@ -14,6 +14,6 @@ class TestDemo extends StatelessWidget {
 
 class XZYTestDemo {
   static greet(String name) {
-    return 'hello $name';
+    return 'hello $name~~~';
   }
 }
