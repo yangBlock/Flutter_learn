@@ -24,6 +24,10 @@ class AppFlutter extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
       return MaterialApp(
+//        locale: Locale('en','US'),
+        localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
+          return Locale('en','US');
+        },
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
@@ -35,7 +39,7 @@ class AppFlutter extends StatelessWidget {
           debugShowCheckedModeBanner: false,
 //          home: NavigatorDemo(),
           //初始路由
-          initialRoute: '/mdc',
+          initialRoute: '/i18n',
           routes: {//带名字的路由
             '/':(context) => Home(),//初始路由
 //            '/about':(context) => Page(title: 'About'),
