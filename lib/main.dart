@@ -26,9 +26,10 @@ class AppFlutter extends StatelessWidget {
     Widget build(BuildContext context) {
       return MaterialApp(
 //        locale: Locale('en','US'),
-        localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
-          return Locale('en','US');
-        },
+        locale: Locale('zh','CN'),
+//        localeResolutionCallback: (Locale locale, Iterable<Locale> supportedLocales) {
+//          return Locale('en','US');
+//        },
         localizationsDelegates: [
           XZYDemoLocalizationsDelegate(),
           GlobalMaterialLocalizations.delegate,

@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 class XZYDemoLocalizations {
   final Locale locale;
   XZYDemoLocalizations(this.locale);
+
+  static XZYDemoLocalizations of(BuildContext context) {
+    return Localizations.of<XZYDemoLocalizations>(
+      context,
+      XZYDemoLocalizations
+    );
+  }
   static Map<String, Map<String, String>> _localized = {
     'en': {
       'title':'hello',
