@@ -19,8 +19,8 @@ void main () {
 
 //有没有指定的文本小部件，显示的文字是hello
   final labelText = find.text('hello');
-//  expect(labelText, findsNothing);
-  expect(labelText, findsOneWidget);
+  expect(labelText, findsNothing);
+//  expect(labelText, findsOneWidget);
 //  expect(labelText, findsNWidgets(1));
 
 }
