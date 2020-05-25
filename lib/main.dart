@@ -35,7 +35,7 @@ class AppFlutter extends StatelessWidget {
           debugShowCheckedModeBanner: false,
 //          home: NavigatorDemo(),
           //初始路由
-          initialRoute: '/i18n',
+          initialRoute: '/mdc',
           routes: {//带名字的路由
             '/':(context) => Home(),//初始路由
 //            '/about':(context) => Page(title: 'About'),
