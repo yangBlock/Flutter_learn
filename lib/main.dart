@@ -18,6 +18,7 @@ import './demo/http/http_demo.dart';
 import './demo/animation/animation_demo.dart';
 import './demo/i18n/i18n_demo.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutterapptext/demo/i18n/map/xzy_demo_localizations.dart';
 void main () => runApp(AppFlutter());
 
 class AppFlutter extends StatelessWidget {
@@ -29,6 +30,7 @@ class AppFlutter extends StatelessWidget {
           return Locale('en','US');
         },
         localizationsDelegates: [
+          XZYDemoLocalizationsDelegate(),
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
         ],
