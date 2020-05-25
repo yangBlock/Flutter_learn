@@ -20,7 +20,7 @@ import './demo/i18n/i18n_demo.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 //import 'package:flutterapptext/demo/i18n/map/xzy_demo_localizations.dart';
 import 'package:flutterapptext/demo/i18n/intl/xzy_localizations.dart';
-
+import 'package:flutterapptext/demo/test/test_demo.dart';
 void main () => runApp(AppFlutter());
 
 class AppFlutter extends StatelessWidget {
@@ -44,7 +44,7 @@ class AppFlutter extends StatelessWidget {
           debugShowCheckedModeBanner: false,
 //          home: NavigatorDemo(),
           //初始路由
-          initialRoute: '/i18n',
+          initialRoute: '/test',
           routes: {//带名字的路由
             '/':(context) => Home(),//初始路由
 //            '/about':(context) => Page(title: 'About'),
@@ -57,6 +57,7 @@ class AppFlutter extends StatelessWidget {
             '/http':(context) => HttpDemo(),
             '/animation':(context) => AnimationDemo(),
             '/i18n':(context) => I18nDemo(),
+            '/test':(context) => TestDemo(),
           },
           theme: ThemeData(
             primarySwatch: Colors.yellow,
